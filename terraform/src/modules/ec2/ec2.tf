@@ -5,6 +5,7 @@ resource "aws_instance" "app" {
   subnet_id              = var.subnet_for_app.id
   vpc_security_group_ids = [aws_security_group.for_app_server.id]
   iam_instance_profile   = "instance_profile"
+  key_name               = aws_key_pair.keypair.id
 
   tags = {
     Name = "${var.base_name}-ec2"
@@ -33,4 +34,9 @@ resource "aws_security_group" "for_app_server" {
   tags = {
     Name = "allow all"
   }
+}
+
+resource "aws_key_pair" "keypair" {
+  key_name   = "for-etl"
+  public_key = file("${path.module}/util/keypair.pub")
 }
