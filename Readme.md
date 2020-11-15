@@ -29,3 +29,16 @@ $ source ~/.bashrc
 ```
 $ embulk gem install embulk-input-s3
 ```
+
+### Install PSQL (for postgres connecting)
+```
+$ sudo yum -y install postgresql.x86_64
+```
+### How to connect RDS(postgres)
+```
+# first you should connect EC2 server by ssh.
+$ ssh -i ./yourkey ec2-user@hostname
+
+# connect posgtres using psql
+$ psql -h <endpoint-of-postgres> -U etl_user -d etl
+```

@@ -35,3 +35,15 @@ module "ec2" {
   subnet_for_app = module.network.subnet_for_app
   etl_bucket     = module.s3.created_bucket
 }
+
+module "rds" {
+  source = "./modules/rds"
+
+  base_name    = var.base_name
+  vpc_main     = module.network.vpc_main
+  rds_subnet_1 = module.network.subnet_for_app
+  rds_subnet_2 = module.network.subnet_for_app2
+  source_security_group_ids = [
+      module.ec2.security_group_for_app.id
+  ]
+}
