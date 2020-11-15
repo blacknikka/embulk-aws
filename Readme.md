@@ -28,6 +28,7 @@ $ source ~/.bashrc
 - Input from S3
 ```
 $ embulk gem install embulk-input-s3
+$ embulk gem install embulk-output-postgresql
 ```
 
 ### Install PSQL (for postgres connecting)
@@ -42,3 +43,6 @@ $ ssh -i ./yourkey ec2-user@hostname
 # connect posgtres using psql
 $ psql -h <endpoint-of-postgres> -U etl_user -d etl
 ```
+
+### How to use embulk
+See [readme](./embulk/Readme.md).
