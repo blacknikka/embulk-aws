@@ -1,0 +1,16 @@
+{% include 'env' %}
+in:
+  type: s3
+  bucket: {{ bucket_name }}
+  path_prefix: 20201115
+  region: us-east-1
+  access_key_id: {{ aws_key_id }}
+  secret_access_key: {{ aws_access_key }}
+out:
+  type: postgresql
+  host: {{ rdb_endpoint }}
+  user: etl_user
+  password: secretsecret
+  database: etl
+  table: titanic
+  mode: insert

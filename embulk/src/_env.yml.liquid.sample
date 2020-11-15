@@ -1,0 +1,4 @@
+{% assign bucket_name = 'bucket-name' %}
+{% assign aws_key_id = 'id' %}
+{% assign aws_access_key = 'key' %}
+{% assign rdb_endpoint = 'rds-endpoint' %}
