@@ -1,16 +1,16 @@
 terraform {
   required_version = ">= 0.12.0"
-  #   backend "s3" {
-  #     region  = "us-east-1"
-  #     encrypt = true
+  backend "s3" {
+    region  = "us-east-1"
+    encrypt = true
 
-  #     bucket = "terraform-bucket-fortfstate"
-  #     key    = "terraform.tfstate"
-  #   }
+    bucket = "terraform-bucket-fortfstate-us-east-1"
+    key    = "terraform-embulk-aws.tfstate"
+  }
 }
 
 provider "aws" {
-  region     = var.region
+  region = var.region
 }
 
 module "network" {
@@ -42,6 +42,6 @@ module "rds" {
   rds_subnet_1 = module.network.subnet_for_app
   rds_subnet_2 = module.network.subnet_for_app2
   source_security_group_ids = [
-      module.ec2.security_group_for_app.id
+    module.ec2.security_group_for_app.id
   ]
 }

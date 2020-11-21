@@ -1,3 +1,9 @@
+# EC2 key-pair
+resource "aws_key_pair" "keypair" {
+  key_name = "aws_ec2"
+  public_key = ""
+}
+
 # aws_instance
 resource "aws_instance" "app" {
   ami                    = data.aws_ssm_parameter.amzn2_ami.value
@@ -34,9 +40,4 @@ resource "aws_security_group" "for_app_server" {
   tags = {
     Name = "allow all"
   }
-}
-
-resource "aws_key_pair" "keypair" {
-  key_name   = "for-etl"
-  public_key = file("${path.module}/util/keypair.pub")
 }
