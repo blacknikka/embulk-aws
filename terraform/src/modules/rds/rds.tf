@@ -13,7 +13,7 @@ resource "aws_db_instance" "rdb" {
   storage_type           = "gp2"
   engine                 = "postgres"
   engine_version         = "11.5"
-  instance_class         = "db.t3.micro"
+  instance_class         = "db.t2.micro"
   name                   = "etl"
   username               = "etl_user"
   password               = "secretsecret"
